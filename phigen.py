@@ -44,7 +44,9 @@ class Phigen:
             return self._randget(self._config['prefixes']) + self._randget(self._config['suffixes'])
     def _phi(self, update=False):
         if update:
-            return self._config['philosophers'].pop()
+            phi =  self._randget(self._config['philosophers'])
+            self._config['philosophers'].remove(phi)
+            return phi
         return self._randget(self._config['philosophers'])
     def _phiandcon(self):
         phi1  = self._phi()
@@ -97,14 +99,17 @@ class Phigen:
     def _num(self, s):
         m = md5.new()
         m.update(s.encode('utf-8'))
-        return int(m.hexdigest(), 16) & 12131231
+        return int(m.hexdigest(), 16) 
     def genprint(self, inputstr):
         g = self.gen(inputstr)
         print g['title']
         print g['story']
     def gen(self, inputstr):
         self._prepare()
-        self._inputnum = list(str(self._num(inputstr)))
+        l = list(str(self._num(inputstr)))[2:-2]
+        l.reverse()
+        print l
+        self._inputnum = l
         self._orginput = self._inputnum[0:]
         num = self._rand(3)
         template_id = num
