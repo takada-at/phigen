@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title></title>
+    <title>哲学論文ジェネレーター</title>
     <link href="{{ url_for('static', filename='bootstrap/css/bootstrap.css') }}" rel="stylesheet">
     <style type="text/css">
       body {
@@ -27,14 +27,21 @@
       <!-- Main hero unit for a primary marketing message or call to action -->
       <div class="hero-unit">
         <p>著者: {{author}}</p>
-        <h2>{{title}}</h2>
+        <h2>タイトル： {{title}}</h2>
         <p>要約: {{contents}}</p>
       </div>
 
       <h2>もう一度</h2>
-      <form>
-        <input type="text" name='input'/>
-        <input type="submit" value="論文を作成する" />
+      <form action="{{url_for('gen')}}">
+        <div class="control-group">
+          <label class="control-label">著者</label>
+          <div class="controls">
+            <input type="text" name='input'></input>
+          </div>
+        </div>
+        <div class="form-actions">
+        <input type="submit" value="論文を作成する" class="btn btn-primary" ></input>
+        </div>
       </form>
       <footer>
         <p>&copy; @at_akada 2012</p>
