@@ -9,6 +9,9 @@
         padding-top: 60px;
         padding-bottom: 40px;
       }
+      .formbox{
+        margin-top: 50px;
+      }
     </style>
     <link href="{{ url_for('static', filename='bootstrap/css/bootstrap-responsive.css') }}" rel="stylesheet">
 
@@ -30,8 +33,9 @@
         <h2>タイトル： {{title}}</h2>
         <p>要約: {{contents}}</p>
       </div>
-      <a href="{{twitter}}">twitterに投稿する</a>
+      <a href="{{twitter}}" class="btn">twitterに投稿する</a>
 
+      <div class="formbox">
       <h2>もう一度</h2>
       <form action="{{url_for('gen')}}">
         <div class="control-group">
@@ -44,6 +48,7 @@
         <input type="submit" value="論文を作成する" class="btn btn-primary" ></input>
         </div>
       </form>
+      </div>
       <footer>
         <p>&copy; @at_akada 2012</p>
       </footer>
